@@ -17,7 +17,7 @@ public class FixedDepositAccount extends AbstractAccount {
         throw new AccountException("Premature withdrawl not allowed on fixed deposit account");
     }
 
-    public double calculateMaturityAmount() {
+    private double calculateMaturityAmount() {
         return this.balance * Math.pow(1 + (interestRate / 100.0) / 12, 12 * (tenureMonths / 12.0));
     }
 

@@ -60,7 +60,7 @@ public abstract class AbstractAccount {
     // TODO: Step 1.4 - Declare the hook every subclass must implement:
     //   a public abstract method named processDebit that takes a double amount, returns void,
     //   and throws AccountException.
-    public abstract void processDebit(double amount) throws AccountException;
+    protected abstract void processDebit(double amount) throws AccountException;
 
     public void displayAccountInfo() {
         System.out.println("Account Number: " + accountNumber);
