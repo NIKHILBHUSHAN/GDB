@@ -16,7 +16,6 @@ public interface IAccount {
     void deposit(double amount) throws InvalidAmountException;
     void withdraw(double amount, String enteredPin) throws AccountException;
     void displayAccountInfo();
-    void processDebit(double amount) throws AccountException;
     String getAccountNumber();
     String getName();
     int getAge();

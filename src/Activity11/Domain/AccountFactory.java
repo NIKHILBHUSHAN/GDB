@@ -11,6 +11,7 @@ public class AccountFactory {
     //       "SALARY"              -> a new SalaryAccount       (employerName "TechCorp")
     //       default               -> throw new IllegalArgumentException("Unknown account type: " + type)
     public static IAccount createAccount(String type, String accNum, String name, int age, double balance, String status, String pin) {
+        if (type.equals("null")) throw new IllegalArgumentException("Account type is null");
         return switch (type.toUpperCase()) {
             case "SAVINGS" -> new SavingsAccount(accNum, name, age, balance, status, pin, 1000.0, 4.0);
             case "CURRENT" -> new CurrentAccount(accNum, name, age, balance, status, pin, 25000.0);
