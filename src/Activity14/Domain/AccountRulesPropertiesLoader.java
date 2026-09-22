@@ -16,7 +16,7 @@ public class AccountRulesPropertiesLoader {
     //   1. Try the classpath first: getClass().getClassLoader().getResourceAsStream(configPath).
     //   2. If that returns null and new File(configPath) exists, open it with a FileInputStream instead.
     //   3. Close the stream afterwards. Catch any exception and print a warning (leave 'properties' empty).
-    private void loadProperties(String configPath) {
+    /*private void loadProperties(String configPath) {
         try{
             InputStream input=getClass().getClassLoader().getResourceAsStream(configPath);
             if(input==null && new File(configPath).exists()){
@@ -29,6 +29,39 @@ public class AccountRulesPropertiesLoader {
             }
         } catch (Exception e) {
             System.out.println("Error loading properties file"+e.getMessage());
+        }
+    }*/
+    private void loadProperties(String configPath) {
+
+        try {
+            System.out.println("Trying to load: " + configPath);
+
+            InputStream input =
+                    getClass().getClassLoader()
+                            .getResourceAsStream(configPath);
+
+            if (input != null) {
+                System.out.println("FOUND in classpath: " + configPath);
+            }
+
+            if (input == null && new File(configPath).exists()) {
+                System.out.println("FOUND in filesystem: " + configPath);
+                input = new FileInputStream(configPath);
+            }
+
+            if (input == null) {
+                System.out.println("NOT FOUND: " + configPath);
+                return;
+            }
+
+            try (InputStream stream = input) {
+                properties.load(stream);
+            }
+
+            System.out.println("Loaded properties: " + properties);
+
+        } catch (Exception e) {
+            System.out.println("Error loading properties: " + e.getMessage());
         }
     }
 

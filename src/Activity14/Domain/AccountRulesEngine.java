@@ -2,7 +2,7 @@ package Activity14.Domain;
 
 public class AccountRulesEngine {
     private static AccountRulesPropertiesLoader savingsLoader =
-        new AccountRulesPropertiesLoader("Activity14/Rules/salary.properties");
+        new AccountRulesPropertiesLoader("Activity14/Rules/savings.properties");
 
     // Bucket names are lowercase so they match the keys in savings.properties (e.g. min.balance.new).
     public static String getSavingsBucket(int tenureYears) {
